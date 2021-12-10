@@ -1,0 +1,76 @@
+@import './components/_all.scss';
+
+body{
+    background: rgb(212, 235, 248);
+}
+
+.wrapper{
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    border: 2px solid rgb(201, 201, 201);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+
+@media screen and (max-width: 400px) {
+    .add{
+        &__container{
+            flex-wrap:wrap
+        }
+    }
+    .edit{
+        &__container{
+            flex-wrap:wrap
+        }
+    }
+    .group{
+        &__buttons{
+            display: block;
+            &__edit{
+                width: 230px;
+            }
+        }
+    }
+}
+
+
+.edit{
+    &__container{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px 40px 20px;
+        &__input{
+            padding: 10px 0 10px 5px;
+            border: 1px solid transparent;
+        }
+        &__button{
+            height: 40px;
+            border: 1px solid transparent;
+            color: white;
+            background: rgb(117, 47, 0);
+            cursor: pointer;
+        }
+    }
+}
+
+
+.add{
+    &__container{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px 40px 20px;
+        &__input{
+            padding: 10px 0 10px 5px;
+            border: 1px solid transparent;
+        }
+        &__button{
+            height: 40px;
+            border: 1px solid transparent;
+            color: white;
+            background: rgb(0, 102, 14);
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.group{
+    &__buttons{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__edit{
+            background: rgb(117, 47, 0);
+            padding: 10px;
+            color: white;
+            border-radius: 7px;
+        }
+        &__add{
+            width: 100px;
+            height: 40px;
+            color: white;
+            background: green;
+            border:1px solid;
+            border-radius: 7px;
+        }
+    }
+}

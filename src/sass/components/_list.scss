@@ -1,0 +1,33 @@
+
+.list{
+    &__gradients{
+        h1{
+            background: rgb(1, 73, 61);
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        &__item{
+            margin-bottom: 40px ;
+            // background: linear-gradient(to right, blue, pink);
+            height: 100px;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            padding:30px;
+            border-radius: 30px;
+            &__group{
+                &__button{
+                    border: 1px solid transparent;
+                    color: white;
+                    background: rgb(0, 0, 0);
+                    padding: 10px;
+                    border-radius: 10px;
+                    cursor: pointer;
+
+                }
+            }
+        }
+    }
+}
+
