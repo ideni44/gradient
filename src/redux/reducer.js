@@ -42,9 +42,10 @@ const gradients = (state = initialState,action) => {
                 items:[...action.payload],
             }
         case 'SET_EDIT_ITEM':
-            return{
+            state.selectedItem.splice(0, 1)
+            return {
                 ...state,
-                selectedItem: state.selectedItem.pop() ? state.items.filter(i=>i.id===action.payload) : state.items.filter(i=>i.id===action.payload)
+                selectedItem: state.items.filter(item=>item.id == action.payload)
             }
         default:
             return state         
