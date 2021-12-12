@@ -14,6 +14,7 @@ const deleteItem = (id) => {
 
 
 const editItem = (position,color) => {
+    // console.log(position,color)
     return {
         type:'EDIT_ITEM',
         position,

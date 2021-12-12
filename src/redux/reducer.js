@@ -1,3 +1,5 @@
+import { act } from "react-dom/cjs/react-dom-test-utils.production.min"
+
 const initialState = {
     items:[
         {
@@ -27,9 +29,13 @@ const gradients = (state = initialState,action) => {
                 items:state.items.unshift(action.payload),
             }
         case 'EDIT_ITEM':
+            let arr = [...state.selectedItem]
+            arr.forEach(i=>{
+                i[action.position]='#' + action.color
+            })
             return {
                 ...state,
-                items: action.position === 'first' ? state.items.map(i=>i.id == action.payload && i.first == action.color) : state.items.map(i=>i.id == action.payload && i.second == action.color),
+                selectedItem:arr
             }
         case 'DELETE_ITEM':
             return {

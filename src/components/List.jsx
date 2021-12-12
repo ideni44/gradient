@@ -21,29 +21,14 @@ function List({edit}) {
         dispatch(setEditItem(id))
     }
 
-
+    const array = edit ? selectedItem : items
     return (
         <section className="list">
             <div className="list__gradients">
                 {
-                    edit ?
-                    selectedItem.map(i=>{
+                    array.map(i=>{
                         const {id,first,second} = i
-                        return (
-                            <div className="list__gradients__item" key={id} style={{background:`linear-gradient(to right, ${first}, ${second})`}}>
-                                <h1 className="list__gradients__item__title">{first}</h1>
-                                <div className="list__gradients__item__group">
-                                    <Link to={'/edit/' + id}>
-                                        <button className="list__gradients__item__group__button" onClick={()=>setEditGradient(id)}>Edit</button>
-                                    </Link>
-                                    <button className="list__gradients__item__group__button" onClick={()=>deleteGradient(id)}>Delete</button>
-                                </div>
-                                <h1 className="list__gradients__item__title">{second}</h1>
-                            </div>
-                        )
-                    }) :
-                    items.map(i=>{
-                        const {id,first,second} = i
+                        console.log(i)
                         return (
                             <div className="list__gradients__item" key={id} style={{background:`linear-gradient(to right, ${first}, ${second})`}}>
                                 <h1 className="list__gradients__item__title">{first}</h1>
