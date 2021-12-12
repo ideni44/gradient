@@ -7,7 +7,7 @@ function Home() {
     return (
         <div>
            <Addbuttons/> 
-           <List/>
+           <List buttonsAllow={true}/>
         </div>
     )
 }

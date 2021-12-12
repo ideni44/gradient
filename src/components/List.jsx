@@ -3,21 +3,23 @@ import { Link } from 'react-router-dom'
 import { deleteItem, setEditItem } from '../redux/actions'
 
 
-function List({edit,addNew}) {
+function List({allow,buttonsAllow}) {
 
     const dispatch = useDispatch()
     const items = useSelector(state=>state.items)
     const selectedItem = useSelector(state=>state.selectedItem)
 
 
-    const actionWithGradient = (id,action) => {
-        action === 'delete' ? dispatch(deleteItem(id)) : dispatch(setEditItem(id))
+    const deleteGradient = (id) => {
         dispatch(deleteItem(id))
     }
 
-    const array = edit ? selectedItem : items
-    const buttonsNone = (edit||addNew) && {display:'none'}
+    const setEditGradient = (id) => {
+        dispatch(setEditItem(id))
+    }
 
+    const array = allow ? selectedItem : items
+    const buttons = buttonsAllow ? {display:'inline-block'} : {display:'none'} 
 
     return (
         <section className="list">
@@ -34,13 +36,13 @@ function List({edit,addNew}) {
                                     <Link to={'/edit/' + id}>
                                         <button 
                                             className="list__gradients__item__group__button" 
-                                            onClick={()=>actionWithGradient(id,'edit')} 
-                                            style={buttonsNone}>Edit</button>
+                                            onClick={()=>setEditGradient(id)}
+                                            style={buttons}>Edit</button>
                                     </Link>
                                     <button 
                                         className="list__gradients__item__group__button" 
-                                        onClick={()=>actionWithGradient(id,'delete')} 
-                                        style={buttonsNone}>Delete</button>
+                                        onClick={()=>deleteGradient(id)}
+                                        style={buttons}>Delete</button>
                                 </div>
                                 <h1 className="list__gradients__item__title">{second}</h1>
                             </div>
@@ -54,3 +56,5 @@ function List({edit,addNew}) {
 
 export default List
 
+
+// Сделдать кнопки удобнее

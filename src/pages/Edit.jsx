@@ -20,7 +20,7 @@ function Edit() {
     const changeInput = (e,position) => {
         let value = e.target.value
         position ==='first' ? setSelectedGradient({...selectedGradient,first:value}) : setSelectedGradient({...selectedGradient,second:value})
-        value.length !=0 ? setButtonAllow({...buttonAllow, [position]: true}) : setButtonAllow({...buttonAllow,[position]: false})
+        value.length !==0 ? setButtonAllow({...buttonAllow, [position]: true}) : setButtonAllow({...buttonAllow,[position]: false})
     }
 
 
@@ -55,7 +55,7 @@ function Edit() {
                         style={secondButton}>Edit</button>
                 </div>
             </div>
-            <List edit={true}/>
+            <List allow={true} buttonsAllow={false}/>
         </section>
     )
 }

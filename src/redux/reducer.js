@@ -1,17 +1,17 @@
 const initialState = {
     items:[
         {
-            id:1,
+            id:Date.now()+8,
             first:'#bcbcc3',
             second:'#0000b8',
         },
         {
-            id:2,
+            id:Date.now()+2,
             first:'#ff0000',
             second:'#000000',
         },
         {
-            id:3,
+            id:Date.now()+3,
             first:'#fc466b',
             second:'#3f5efb',
         }
@@ -54,7 +54,7 @@ const gradients = (state = initialState,action) => {
             state.selectedItem.splice(0, 1)
             return {
                 ...state,
-                selectedItem: state.items.filter(item=>item.id == action.payload)
+                selectedItem: state.items.filter(item =>item.id == action.payload),
             }
         default:
             return state         

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import List from '../components/List'
@@ -12,6 +12,11 @@ function Addnew() {
     const [selectedGradient, setSelectedGradient] = useState({'first':null,'second':null})
     const [buttonAllow,setButtonAllow] = useState(true)
 
+    useEffect(()=>{
+        if(selectedGradient.first && selectedGradient.second){
+            setButtonAllow(false)
+        }
+    },[selectedGradient])
 
     const editGradient = () =>{
         if(!/[^0-9a-f]+/i.test(selectedGradient['first' && 'second']) && (selectedGradient['first' && 'second'].length <= 6 && selectedGradient['first' && 'second'].length >= 3 && selectedGradient['first' && 'second'].length !==4)){
@@ -21,13 +26,9 @@ function Addnew() {
         }
     }
 
-
     const changeInput = (e,position) => {
         let value = e.target.value
         position === 'first' ? setSelectedGradient({...selectedGradient,first:value}) : setSelectedGradient({...selectedGradient,second:value})
-        if(selectedGradient.first && selectedGradient.second){
-            setButtonAllow(false)
-        }
     }
 
     const linkAllowed = (e) => {
@@ -55,7 +56,7 @@ function Addnew() {
                         style={buttonAllow ?{cursor: 'not-allowed'}:{cursor:'pointer'}}>Add new</button>
                 </Link>
             </div>
-           <List addNew={true}/>
+           <List buttonsAllow={false}/>
         </section>
     )
 }
