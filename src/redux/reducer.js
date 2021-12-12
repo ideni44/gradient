@@ -1,5 +1,3 @@
-import { act } from "react-dom/cjs/react-dom-test-utils.production.min"
-
 const initialState = {
     items:[
         {
@@ -24,12 +22,17 @@ const initialState = {
 const gradients = (state = initialState,action) => {    
     switch(action.type){
         case 'ADD_ITEM':
+            const newItem = {
+                id:Date.now(),
+                'first':'#' + action.payload.first,
+                'second':'#' + action.payload.second
+            }
             return {
                 ...state,
-                items:state.items.unshift(action.payload),
+                items:[newItem,...state.items]
             }
         case 'EDIT_ITEM':
-            let arr = [...state.selectedItem]
+            const arr = [...state.selectedItem]
             arr.forEach(i=>{
                 i[action.position]='#' + action.color
             })

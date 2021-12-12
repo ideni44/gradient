@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { deleteItem, setEditItem } from '../redux/actions'
@@ -22,6 +21,8 @@ function List({edit}) {
     }
 
     const array = edit ? selectedItem : items
+
+
     return (
         <section className="list">
             <div className="list__gradients">
