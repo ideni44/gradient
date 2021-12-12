@@ -10,18 +10,13 @@ function List({edit}) {
     const selectedItem = useSelector(state=>state.selectedItem)
 
 
-    const deleteGradient = (id) => {
-        console.log(id)
+    const actionWithGradient = (id,action) => {
+        action === 'delete' ? dispatch(deleteItem(id)) : dispatch(setEditItem(id))
         dispatch(deleteItem(id))
     }
 
-    const setEditGradient = (id) => {
-        console.log(id)
-        dispatch(setEditItem(id))
-    }
-
     const array = edit ? selectedItem : items
-
+    const buttonDelete = edit && {display:'none'}
 
     return (
         <section className="list">
@@ -31,13 +26,21 @@ function List({edit}) {
                         const {id,first,second} = i
                         console.log(i)
                         return (
-                            <div className="list__gradients__item" key={id} style={{background:`linear-gradient(to right, ${first}, ${second})`}}>
+                            <div className="list__gradients__item" 
+                                key={id} 
+                                style={{background:`linear-gradient(to right, ${first}, ${second})`}}>
                                 <h1 className="list__gradients__item__title">{first}</h1>
                                 <div className="list__gradients__item__group">
                                     <Link to={'/edit/' + id}>
-                                        <button className="list__gradients__item__group__button" onClick={()=>setEditGradient(id)}>Edit</button>
+                                        <button 
+                                            className="list__gradients__item__group__button" 
+                                            onClick={()=>actionWithGradient(id,'edit')} 
+                                            style={buttonDelete}>Edit</button>
                                     </Link>
-                                    <button className="list__gradients__item__group__button" onClick={()=>deleteGradient(id)}>Delete</button>
+                                    <button 
+                                        className="list__gradients__item__group__button" 
+                                        onClick={()=>actionWithGradient(id,'delete')} 
+                                        style={buttonDelete}>Delete</button>
                                 </div>
                                 <h1 className="list__gradients__item__title">{second}</h1>
                             </div>
@@ -51,5 +54,3 @@ function List({edit}) {
 
 export default List
 
-
-// Сделдать кнопки удобнее

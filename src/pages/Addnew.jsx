@@ -44,7 +44,7 @@ function Addnew() {
                     className="add__container__button"
                     onClick={()=>editGradient()} 
                     disabled={buttonAllow} 
-                    style={buttonAllow ?{cursor: 'not-allowed'}:{cursor:'pointer'}}>Edit</button>
+                    style={buttonAllow ?{cursor: 'not-allowed'}:{cursor:'pointer'}}>Add new</button>
             </div>
            <List/>
         </section>

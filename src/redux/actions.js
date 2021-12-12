@@ -14,7 +14,6 @@ const deleteItem = (id) => {
 
 
 const editItem = (position,color) => {
-    // console.log(position,color)
     return {
         type:'EDIT_ITEM',
         position,
@@ -33,7 +32,6 @@ const setItems = (items) => {
 
 
 const setEditItem = (id) => {
-    console.log(id)
     return {
         type:'SET_EDIT_ITEM',
         payload:id,

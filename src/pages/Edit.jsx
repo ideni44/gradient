@@ -23,6 +23,10 @@ function Edit() {
         value.length !=0 ? setButtonAllow({...buttonAllow, [position]: true}) : setButtonAllow({...buttonAllow,[position]: false})
     }
 
+
+    const firstButton = !buttonAllow['first']?{cursor: 'not-allowed'}:{cursor:'pointer'}
+    const secondButton = !buttonAllow['second']?{cursor: 'not-allowed'}:{cursor:'pointer'}
+
     return (
         <section className="edit">
             <div className="edit__container">
@@ -36,7 +40,7 @@ function Edit() {
                         className="edit__container__button" 
                         onClick={()=>editGradient('first')} 
                         disabled={!buttonAllow['first']} 
-                        style={!buttonAllow['first']?{cursor: 'not-allowed'}:{cursor:'pointer'}}>Edit</button>
+                        style={firstButton}>Edit</button>
                 </div>
                 <div>
                     <input 
@@ -48,7 +52,7 @@ function Edit() {
                         className="edit__container__button" 
                         disabled={!buttonAllow['second']} 
                         onClick={()=>editGradient('second')} 
-                        style={!buttonAllow['second']?{cursor: 'not-allowed'}:{cursor:'pointer'}}>Edit</button>
+                        style={secondButton}>Edit</button>
                 </div>
             </div>
             <List edit={true}/>
