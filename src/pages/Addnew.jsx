@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import List from '../components/List'
 import { addItem } from '../redux/actions'
 
@@ -24,7 +25,13 @@ function Addnew() {
     const changeInput = (e,position) => {
         let value = e.target.value
         position === 'first' ? setSelectedGradient({...selectedGradient,first:value}) : setSelectedGradient({...selectedGradient,second:value})
-        setButtonAllow(false)
+        if(selectedGradient.first && selectedGradient.second){
+            setButtonAllow(false)
+        }
+    }
+
+    const linkAllowed = (e) => {
+        buttonAllow && e.preventDefault()
     }
 
     return (
@@ -40,13 +47,15 @@ function Addnew() {
                     type="text"
                     placeholder="First color"  
                     onChange={(e)=>changeInput(e,'second')}/>
-                <button 
-                    className="add__container__button"
-                    onClick={()=>editGradient()} 
-                    disabled={buttonAllow} 
-                    style={buttonAllow ?{cursor: 'not-allowed'}:{cursor:'pointer'}}>Add new</button>
+                <Link to='/' onClick={(e)=>linkAllowed(e)}>
+                    <button 
+                        className="add__container__button"
+                        onClick={()=>editGradient()} 
+                        disabled={buttonAllow} 
+                        style={buttonAllow ?{cursor: 'not-allowed'}:{cursor:'pointer'}}>Add new</button>
+                </Link>
             </div>
-           <List/>
+           <List addNew={true}/>
         </section>
     )
 }

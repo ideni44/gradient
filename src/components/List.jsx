@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { deleteItem, setEditItem } from '../redux/actions'
 
 
-function List({edit}) {
+function List({edit,addNew}) {
 
     const dispatch = useDispatch()
     const items = useSelector(state=>state.items)
@@ -16,7 +16,8 @@ function List({edit}) {
     }
 
     const array = edit ? selectedItem : items
-    const buttonDelete = edit && {display:'none'}
+    const buttonsNone = (edit||addNew) && {display:'none'}
+
 
     return (
         <section className="list">
@@ -24,7 +25,6 @@ function List({edit}) {
                 {
                     array.map(i=>{
                         const {id,first,second} = i
-                        console.log(i)
                         return (
                             <div className="list__gradients__item" 
                                 key={id} 
@@ -35,12 +35,12 @@ function List({edit}) {
                                         <button 
                                             className="list__gradients__item__group__button" 
                                             onClick={()=>actionWithGradient(id,'edit')} 
-                                            style={buttonDelete}>Edit</button>
+                                            style={buttonsNone}>Edit</button>
                                     </Link>
                                     <button 
                                         className="list__gradients__item__group__button" 
                                         onClick={()=>actionWithGradient(id,'delete')} 
-                                        style={buttonDelete}>Delete</button>
+                                        style={buttonsNone}>Delete</button>
                                 </div>
                                 <h1 className="list__gradients__item__title">{second}</h1>
                             </div>
